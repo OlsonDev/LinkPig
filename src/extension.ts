@@ -112,7 +112,7 @@ export function activate(context: vscode.ExtensionContext) {
 			const normalizedPath = relativePath.replace(/\\/g, '/');
 			
 			// Generate the link
-			let link = `vscode://link-pig?action=open&file=${normalizedPath}`;
+			let link = `vscode://olsondev.link-pig?action=open&file=${normalizedPath}`;
 			if (line !== undefined) {
 				link += `&line=${line}`;
 				if (column !== undefined) {
