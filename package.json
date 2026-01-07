@@ -2,7 +2,7 @@
   "name": "link-pig",
   "displayName": "Link Pig",
   "description": "Execute actions from `vscode://` URIs.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "repository": "github:OlsonDev/LinkPig",
   "publisher": "OlsonDev",
@@ -12,7 +12,9 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onUri"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
