@@ -3,6 +3,8 @@
   "displayName": "Link Pig",
   "description": "Execute actions from `vscode://` URIs.",
   "version": "0.0.1",
+  "license": "MIT",
+  "repository": "github:OlsonDev/LinkPig",
   "engines": {
     "vscode": "^1.107.0"
   },
