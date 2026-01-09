@@ -2,7 +2,7 @@
   "name": "link-pig",
   "displayName": "Link Pig",
   "description": "Execute actions from `vscode://` URIs.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "repository": "github:OlsonDev/LinkPig",
   "publisher": "OlsonDev",
@@ -19,37 +19,33 @@
   "contributes": {
     "commands": [
       {
-        "command": "linkPig.openLink",
-        "title": "Link Pig: Open Link"
-      },
-      {
-        "command": "linkPig.copyLink",
+        "command": "linkPig.copyLinkToFile",
         "title": "Link Pig: Copy Link to Clipboard"
       },
       {
-        "command": "linkPig.copyLinkFromTab",
+        "command": "linkPig.copyLinkToFileLineColumn",
         "title": "Link Pig: Copy Link to Clipboard"
       }
     ],
     "menus": {
       "explorer/context": [
         {
-          "command": "linkPig.copyLink",
+          "command": "linkPig.copyLinkToFile",
           "group": "6_copypath@100",
           "when": "!explorerResourceIsFolder"
         }
       ],
-      "editor/context": [
-        {
-          "command": "linkPig.copyLink",
-          "group": "9_cutcopypaste@100"
-        }
-      ],
       "editor/title/context": [
         {
-          "command": "linkPig.copyLinkFromTab",
+          "command": "linkPig.copyLinkToFile",
           "group": "1_cutcopypaste@100",
           "when": "resourceScheme == file || resourceScheme == vscode-webview"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "linkPig.copyLinkToFileLineColumn",
+          "group": "9_cutcopypaste@100"
         }
       ]
     }

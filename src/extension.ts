@@ -1,116 +1,79 @@
-import * as vscode from 'vscode';
-import * as path from 'path';
-import { LinkPigUriHandler } from './LinkPigUriHandler';
+import * as vscode from "vscode";
+import * as path from "path";
+import { LinkPigUriHandler } from "./LinkPigUriHandler";
+
+function buildOpenLink(
+  fileUri: vscode.Uri,
+  line?: number,
+  column?: number
+): string | null {
+  const workspaceFolder = vscode.workspace.workspaceFolders?.[0];
+  if (!workspaceFolder) {
+    vscode.window.showErrorMessage("Link Pig: No workspace folder is open");
+    return null;
+  }
+
+  const relativePath = path.relative(
+    workspaceFolder.uri.fsPath,
+    fileUri.fsPath
+  );
+
+  // Use forward slashes for cleaner URLs.
+  const normalizedPath = relativePath.replace(/\\/g, "/");
+  let link = `vscode://olsondev.link-pig?action=open&file=${normalizedPath}`;
+  if (line !== undefined) {
+    link += `&line=${line}`;
+    if (column !== undefined) {
+      link += `&column=${column}`;
+    }
+  }
+  return link;
+}
+
+async function copyOpenLink(
+  fileUri: vscode.Uri,
+  line?: number,
+  column?: number
+): Promise<void> {
+  const link = buildOpenLink(fileUri, line, column);
+  if (link) {
+    await vscode.env.clipboard.writeText(link);
+    vscode.window.showInformationMessage(`Link Pig: Link copied to clipboard!`);
+  } else {
+    vscode.window.showErrorMessage("Link Pig: Failed to build link");
+  }
+}
+
+async function copyLinkToFileLineColumn(fileUri: vscode.Uri): Promise<void> {
+  const editor = vscode.window.activeTextEditor;
+  if (!editor) {
+    vscode.window.showErrorMessage("Link Pig: No editor available");
+    return;
+  }
+
+  const line = editor.selection.start.line + 1;
+  const column = editor.selection.start.character + 1;
+  await copyOpenLink(fileUri, line, column);
+}
+
+async function copyLinkToFile(fileUri: vscode.Uri): Promise<void> {
+  await copyOpenLink(fileUri);
+}
 
 export function activate(context: vscode.ExtensionContext) {
-  console.log('Link Pig activated!');
-
-  // Register URI handler
   const uriHandler = new LinkPigUriHandler();
   context.subscriptions.push(vscode.window.registerUriHandler(uriHandler));
+  const cmdCopyLinkToFileLineColumn = vscode.commands.registerCommand(
+    "linkPig.copyLinkToFileLineColumn",
+    copyLinkToFileLineColumn
+  );
+  const cmdCopyLinkToFile = vscode.commands.registerCommand(
+    "linkPig.copyLinkToFile",
+    copyLinkToFile
+  );
 
-  const cmdOpenLink = vscode.commands.registerCommand('linkPig.openLink', () => {
-    vscode.window.showInformationMessage('Link Pig: Open Link command executed!');
-  });
-
-  const cmdCopyLink = vscode.commands.registerCommand('linkPig.copyLink', async (uri: vscode.Uri) => {
-    try {
-      // Get the workspace folder
-      const workspaceFolder = vscode.workspace.workspaceFolders?.[0];
-      if (!workspaceFolder) {
-        vscode.window.showErrorMessage('Link Pig: No workspace folder is open');
-        return;
-      }
-
-      let fileUri: vscode.Uri;
-      let line: number | undefined;
-      let column: number | undefined;
-
-      // Check if there's an active editor with a selection
-      const editor = vscode.window.activeTextEditor;
-      if (editor && (!uri || editor.document.uri.toString() === uri.toString())) {
-        // Called from editor context or explorer with an open editor
-        fileUri = editor.document.uri;
-        // Get the start of the first selection (1-based for URL)
-        line = editor.selection.start.line + 1;
-        column = editor.selection.start.character + 1;
-      } else if (uri) {
-        // Called from explorer context without matching editor
-        fileUri = uri;
-      } else {
-        vscode.window.showErrorMessage('Link Pig: No file or editor available');
-        return;
-      }
-
-      // Calculate relative path from workspace root
-      const relativePath = path.relative(workspaceFolder.uri.fsPath, fileUri.fsPath);
-      
-      // Normalize to forward slashes for cleaner URLs
-      const normalizedPath = relativePath.replace(/\\/g, '/');
-      
-      // Generate the link
-      let link = `vscode://olsondev.link-pig?action=open&file=${normalizedPath}`;
-      if (line !== undefined) {
-        link += `&line=${line}`;
-        if (column !== undefined) {
-          link += `&column=${column}`;
-        }
-      }
-      
-      // Copy to clipboard
-      await vscode.env.clipboard.writeText(link);
-      
-      vscode.window.showInformationMessage(`Link Pig: Link copied to clipboard!`);
-    } catch (error) {
-      vscode.window.showErrorMessage(`Link Pig: Failed to copy link: ${error}`);
-    }
-  });
-
-  const cmdCopyLinkFromTab = vscode.commands.registerCommand('linkPig.copyLinkFromTab', async (uri: vscode.Uri) => {
-    try {
-      // Get the workspace folder
-      const workspaceFolder = vscode.workspace.workspaceFolders?.[0];
-      if (!workspaceFolder) {
-        vscode.window.showErrorMessage('Link Pig: No workspace folder is open');
-        return;
-      }
-
-      let fileUri: vscode.Uri;
-
-      // Use the provided URI or fall back to active editor
-      if (uri) {
-        fileUri = uri;
-      } else {
-        const editor = vscode.window.activeTextEditor;
-        if (editor) {
-          fileUri = editor.document.uri;
-        } else {
-          vscode.window.showErrorMessage('Link Pig: No file or editor available');
-          return;
-        }
-      }
-
-      // Calculate relative path from workspace root
-      const relativePath = path.relative(workspaceFolder.uri.fsPath, fileUri.fsPath);
-      
-      // Normalize to forward slashes for cleaner URLs
-      const normalizedPath = relativePath.replace(/\\/g, '/');
-      
-      // Generate the link without line/column info
-      const link = `vscode://olsondev.link-pig?action=open&file=${normalizedPath}`;
-      
-      // Copy to clipboard
-      await vscode.env.clipboard.writeText(link);
-      
-      vscode.window.showInformationMessage(`Link Pig: Link copied to clipboard!`);
-    } catch (error) {
-      vscode.window.showErrorMessage(`Link Pig: Failed to copy link: ${error}`);
-    }
-  });
-
-  context.subscriptions.push(cmdOpenLink);
-  context.subscriptions.push(cmdCopyLink);
-  context.subscriptions.push(cmdCopyLinkFromTab);
+  context.subscriptions.push(cmdCopyLinkToFileLineColumn);
+  context.subscriptions.push(cmdCopyLinkToFile);
 }
 
 export function deactivate() {}
