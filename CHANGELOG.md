@@ -5,7 +5,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-## [0.0.4] - 2026-01-06
+## [0.0.4] - 2026-01-08
 - Support right-clicking editor tabs.
 
 ## [0.0.3] - 2026-01-06
