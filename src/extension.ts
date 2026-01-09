@@ -129,8 +129,51 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
+	const cmdCopyLinkFromTab = vscode.commands.registerCommand('linkPig.copyLinkFromTab', async (uri: vscode.Uri) => {
+		try {
+			// Get the workspace folder
+			const workspaceFolder = vscode.workspace.workspaceFolders?.[0];
+			if (!workspaceFolder) {
+				vscode.window.showErrorMessage('Link Pig: No workspace folder is open');
+				return;
+			}
+
+			let fileUri: vscode.Uri;
+
+			// Use the provided URI or fall back to active editor
+			if (uri) {
+				fileUri = uri;
+			} else {
+				const editor = vscode.window.activeTextEditor;
+				if (editor) {
+					fileUri = editor.document.uri;
+				} else {
+					vscode.window.showErrorMessage('Link Pig: No file or editor available');
+					return;
+				}
+			}
+
+			// Calculate relative path from workspace root
+			const relativePath = path.relative(workspaceFolder.uri.fsPath, fileUri.fsPath);
+			
+			// Normalize to forward slashes for cleaner URLs
+			const normalizedPath = relativePath.replace(/\\/g, '/');
+			
+			// Generate the link without line/column info
+			const link = `vscode://olsondev.link-pig?action=open&file=${normalizedPath}`;
+			
+			// Copy to clipboard
+			await vscode.env.clipboard.writeText(link);
+			
+			vscode.window.showInformationMessage(`Link Pig: Link copied to clipboard!`);
+		} catch (error) {
+			vscode.window.showErrorMessage(`Link Pig: Failed to copy link: ${error}`);
+		}
+	});
+
 	context.subscriptions.push(cmdOpenLink);
   context.subscriptions.push(cmdCopyLink);
+  context.subscriptions.push(cmdCopyLinkFromTab);
 }
 
 export function deactivate() {}

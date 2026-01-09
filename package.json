@@ -25,6 +25,10 @@
       {
         "command": "linkPig.copyLink",
         "title": "Link Pig: Copy Link to Clipboard"
+      },
+      {
+        "command": "linkPig.copyLinkFromTab",
+        "title": "Link Pig: Copy Link to Clipboard"
       }
     ],
     "menus": {
@@ -39,6 +43,13 @@
         {
           "command": "linkPig.copyLink",
           "group": "9_cutcopypaste@100"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "linkPig.copyLinkFromTab",
+          "group": "1_cutcopypaste@100",
+          "when": "resourceScheme == file || resourceScheme == vscode-webview"
         }
       ]
     }
