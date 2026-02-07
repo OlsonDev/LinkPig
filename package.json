@@ -51,14 +51,14 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run package",
-    "compile": "webpack",
-    "watch": "webpack --watch",
-    "package": "webpack --mode production --devtool hidden-source-map",
+    "vscode:prepublish": "bun run package",
+    "compile": "bun build ./extension/extension.ts --outdir ./dist --target node --format cjs --sourcemap --external vscode --external path",
+    "watch": "bun build ./extension/extension.ts --outdir ./dist --target node --format cjs --sourcemap --external vscode --external path --watch",
+    "package": "bun build ./extension/extension.ts --outdir ./dist --target node --format cjs --sourcemap --minify --external vscode --external path",
     "compile-tests": "tsc -p . --outDir out",
     "watch-tests": "tsc -p . -w --outDir out",
-    "pretest": "npm run compile-tests && npm run compile && npm run lint",
-    "lint": "eslint src",
+    "pretest": "bun run compile-tests && bun run compile && bun run lint",
+    "lint": "eslint extension",
     "test": "vscode-test"
   },
   "devDependencies": {
@@ -68,9 +68,6 @@
     "typescript-eslint": "^8.48.1",
     "eslint": "^9.39.1",
     "typescript": "^5.9.3",
-    "ts-loader": "^9.5.4",
-    "webpack": "^5.103.0",
-    "webpack-cli": "^6.0.1",
     "@vscode/test-cli": "^0.0.12",
     "@vscode/test-electron": "^2.5.2"
   }

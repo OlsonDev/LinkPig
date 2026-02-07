@@ -11,3 +11,10 @@
 - When told to revise something you previously did, consider asking if this file should be updated to avoid repeating past mistakes.
 - Follow the `.editorconfig` and offer suggestions to update it when appropriate. If something is ambiguous because it's unspecified, ask.
 - When the user asks clarifying questions, respond with answers only - do not make any code changes.
+
+## Tool and Terminal Usage
+- Always prefer built-in tools (`list_dir`, `read_file`, `grep_search`, `file_search`) over terminal commands for inspection tasks.
+- For terminal operations, prefer in order:
+  1. Bun for package scripts (`bun run build`, `bun test`), installation (`bun install`), and bundling
+  2. PowerShell for git, file operations, and system commands
+- Never use terminal commands to inspect files when built-in tools can do it.
