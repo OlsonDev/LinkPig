@@ -34,8 +34,14 @@ export class LinkPigUriBuilder {
   }
 
   build(): string {
+    const encodeQueryValue = (value: string): string => {
+      return value.replace(/[%&#\s]/g, (char) => {
+        return '%' + char.charCodeAt(0).toString(16).toUpperCase();
+      });
+    };
+
     const queryString = this.commands
-      .map(({ key, value }) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+      .map(({ key, value }) => `${encodeURIComponent(key)}=${encodeQueryValue(value)}`)
       .join('&');
     
     return `${this.scheme}://${this.authority}?${queryString}`;
