@@ -10,3 +10,4 @@
 - Look for opportunities to follow the DRY (Don't Repeat Yourself) principle.
 - When told to revise something you previously did, consider asking if this file should be updated to avoid repeating past mistakes.
 - Follow the `.editorconfig` and offer suggestions to update it when appropriate. If something is ambiguous because it's unspecified, ask.
+- When the user asks clarifying questions, respond with answers only - do not make any code changes.
