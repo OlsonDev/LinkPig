@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "target": "esnext",
-    "lib": ["esnext"],
-    "outDir": "./out",
-    "rootDir": ".",
+    "target": "ES2022",
+    "module": "Node16",
+    "lib": ["ES2022"],
+    "outDir": "./dist",
+    "composite": true,
+    "declaration": true,
     "sourceMap": true,
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "Node16",
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
@@ -18,12 +19,9 @@
     "exactOptionalPropertyTypes": true,
     "noUncheckedIndexedAccess": true
   },
-  "include": [],
-  "exclude": ["node_modules", "out"],
+  "include": ["./**/*.ts", "../core/**/*.ts"],
+  "exclude": ["node_modules", "dist", "test"],
   "references": [
-    { "path": "./core" },
-    { "path": "./builder" },
-    { "path": "./extension" }
-  ],
-  "files": []
+    { "path": "../core" }
+  ]
 }

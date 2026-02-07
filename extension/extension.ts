@@ -1,6 +1,7 @@
 import * as vscode from "vscode";
 import * as path from "path";
 import { LinkPigUriHandler } from "./LinkPigUriHandler";
+import { LinkPigUriBuilder } from "../builder";
 
 function buildOpenLink(
   fileUri: vscode.Uri,
@@ -18,16 +19,13 @@ function buildOpenLink(
     fileUri.fsPath
   );
 
-  // Use forward slashes for cleaner URLs.
-  const normalizedPath = relativePath.replace(/\\/g, "/");
-  let link = `vscode://olsondev.link-pig?action=open&file=${normalizedPath}`;
+  const builder = LinkPigUriBuilder.create().open(relativePath);
+  
   if (line !== undefined) {
-    link += `&line=${line}`;
-    if (column !== undefined) {
-      link += `&column=${column}`;
-    }
+    builder.select(line, column);
   }
-  return link;
+  
+  return builder.build();
 }
 
 async function copyOpenLink(
