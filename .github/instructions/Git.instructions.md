@@ -13,6 +13,8 @@ instructions: ['Detours']
 - Use commas within a logical change
 - Use semi-colons between changes
 - Two emojis if two main themes
+- Wrap code identifiers in backticks: `devDependencies`, `foo()`
+- Use full commands: `npm audit fix` not "audit fix"
 ```
 ✅ Added SelectCommand tests; updated OpenCommand tests.
 ♻️⚡ Refactored foo for performance.
@@ -49,5 +51,5 @@ See §Detours for keeping diffs reviewable (separate renames, boyscout cleanups)
 
 ## Unofficial emojis
 - 🛸 Extracting code to method/file
-- 🦾 Update AI-related code
-- 🤖 Work done by AI agent
+- 🦾 Update AI-related code (agents, instructions, etc.)
+- 🤖 Significant work done by AI agent
