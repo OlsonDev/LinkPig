@@ -8,6 +8,10 @@ description: Always load these guidelines.
 - Agent references: @Reviewer-DRY
 - Instruction references: §Code-Review
 
+## Reading agents and instructions
+- Read 100+ lines at a time; don't assume files are small
+- When content ends abruptly (e.g., a list), check for more
+
 ## Code
 - Keep documentation additions/edits to a minimum as the project hasn't stabilized.
 - Do NOT worry about backwards compatibility/breaking changes/semver (semantic versioning) yet.
