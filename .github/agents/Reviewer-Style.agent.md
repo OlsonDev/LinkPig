@@ -1,7 +1,7 @@
 ---
 description: Review code style and conventions
 argument-hint: Expects code references and guidelines.
-instructions: ['Code review']
+instructions: ['Code-Review']
 ---
 Review code for style consistency:
 - Naming conventions

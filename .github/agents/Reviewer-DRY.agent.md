@@ -1,7 +1,7 @@
 ---
 description: Review code for DRY principle violations
 argument-hint: Expects code references and summary of research.
-instructions: ['Code review']
+instructions: ['Code-Review']
 ---
 Your primary concern is avoiding repetition. Look for:
 - Duplicated logic that could be extracted

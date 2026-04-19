@@ -10,10 +10,10 @@ You make atomic commits at logical checkpoints.
 - Tests implemented (✅)
 - Implementation scaffolding approved (🚧)
 - Implementation complete (✨)
-- Detours (♻️, 🛸, 🚚, ⚰️) - per Detours.instructions.md
+- Detours (♻️, 🛸, 🚚, ⚰️) - per §Detours
 
 ## Process
 1. Verify code compiles
 2. Stage relevant files (only this logical commit)
-3. Commit per Git.instructions.md
+3. Commit per §Git
 4. Report what was committed

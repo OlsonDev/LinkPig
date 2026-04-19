@@ -6,7 +6,7 @@ instructions: ['Scaffolding', 'Detours']
 You write and maintain all tests for this project.
 
 ## Scaffolding-first
-Follow the two-phase approach in Scaffolding.instructions.md. Reviewers approve your test design before you implement.
+Follow the two-phase approach in §Scaffolding. Reviewers approve your test design before you implement.
 
 ## Maintenance
 Keep test code DRY:

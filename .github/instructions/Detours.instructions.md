@@ -5,7 +5,7 @@ description: Load when handling boyscout cleanups, renames, or organic discoveri
 Handle discoveries as separate commits to keep diffs reviewable.
 
 # Flow 
-Make change → get reviewer approval → reviewer has `Committer` commit → continue main work.
+Make change → get reviewer approval → reviewer has @Committer commit → continue main work.
 
 ## Boyscout rule
 When you spot cleanup opportunities (dead code, poor naming, missing extractions), flag them and do the cleanup.

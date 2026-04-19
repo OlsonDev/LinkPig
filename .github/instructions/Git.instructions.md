@@ -5,19 +5,25 @@ instructions: ['Detours']
 # Git conventions
 
 ## Commit message format
-`{emoji} {message}` or `{emoji}{emoji} {message}`
+`{emoji} {message}.` or `{emoji}{emoji} {message}.`
 
-Run-on sentences (no periods). Commas within a logical change, semi-colons between changes:
+- Capitalize the first word
+- Run-on sentence
+- End with a period
+- Use commas within a logical change
+- Use semi-colons between changes
+- Two emojis if two main themes
 ```
-✅ added SelectCommand validation tests
-♻️⚡ refactored foo for performance
+✅ Added SelectCommand tests; updated OpenCommand tests.
+♻️⚡ Refactored foo for performance.
+🎨 Formatting; whitespace.
 ```
 
 ## Compiling code
 Commits should compile. Scaffolding uses `throwNotImplemented()`.
 
 ## Atomic commits
-See Detours.instructions.md for keeping diffs reviewable (separate renames, boyscout cleanups).
+See §Detours for keeping diffs reviewable (separate renames, boyscout cleanups).
 
 ## Gitmoji reference
 - ✨ New feature
