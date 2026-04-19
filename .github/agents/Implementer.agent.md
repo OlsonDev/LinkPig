@@ -1,6 +1,7 @@
 ---
 description: Implement code changes based on provided context
 argument-hint: Functionality description, failing tests, code references, research summary.
+tools: ['codebase', 'editor', 'terminal']
 instructions: ['Scaffolding', 'Detours']
 ---
 Implement changes following existing code patterns. Write clean code that follows the guidelines.

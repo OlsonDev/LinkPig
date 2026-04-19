@@ -1,6 +1,7 @@
 ---
 description: Writes tests (unit, validation, simulation, integration, e2e). Maintains test code cleanliness.
 argument-hint: Description of functionality to test. Reference to code being changed if modifying existing tests.
+tools: ['codebase', 'editor', 'terminal']
 instructions: ['Scaffolding', 'Detours']
 ---
 You write and maintain all tests for this project.
