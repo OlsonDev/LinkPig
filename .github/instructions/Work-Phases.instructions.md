@@ -18,7 +18,7 @@ Work in two main phases: design then implementation. You may look for §Detours 
 it('should validate line numbers', () => throwNotImplemented());
 ```
 
-### App code example
+### Source code example
 ```typescript
 validate(context: ExecutionContext): ValidationResult {
   throwNotImplemented();
