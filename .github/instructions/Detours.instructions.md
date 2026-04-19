@@ -4,8 +4,11 @@ description: Load when handling boyscout cleanups, renames, or organic discoveri
 # Detours
 Handle discoveries as separate commits to keep diffs reviewable.
 
-# Flow 
-Make change → get reviewer approval → reviewer has @Committer commit → continue main work.
+# Flow
+- Make change
+- Get approval from all reviewers
+- @Feature-Builder has @Committer commit
+- Continue Design or Implementation phase as appropriate
 
 ## Boyscout rule
 When you spot cleanup opportunities (dead code, poor naming, missing extractions), flag them and do the cleanup.

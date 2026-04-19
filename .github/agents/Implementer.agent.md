@@ -1,13 +1,7 @@
 ---
 description: Implement code changes based on provided context
 argument-hint: Functionality description, failing tests, code references, research summary.
-tools: ['codebase', 'editor', 'terminal']
-instructions: ['Scaffolding', 'Detours']
+tools: ['search/codebase', 'editor', 'terminal']
+instructions: ['Guidelines', 'Guidelines-Code', 'Work-Phases', 'Detours']
 ---
-Implement changes following existing code patterns. Write clean code that follows the guidelines.
-
-## Scaffolding-first
-Follow the two-phase approach in §Scaffolding. Reviewers approve your API design before you implement.
-
-## Refactoring
-Follow DRY. When refactoring, don't change behavior. Report refactors upstream.
+Implement changes following existing code patterns. Write clean code. Follow the §Work-Phases and §Guidelines-Code. Be on the lookout for §Detours.

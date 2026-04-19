@@ -1,6 +1,6 @@
 ---
 description: Load when making git commits
-instructions: ['Detours']
+instructions: ['Guidelines', 'Detours']
 ---
 # Git conventions
 
@@ -21,15 +21,12 @@ instructions: ['Detours']
 🎨 Formatting; whitespace.
 ```
 
-## Compiling code
-Commits should compile. Scaffolding uses `throwNotImplemented()`.
-
 ## Atomic commits
 See §Detours for keeping diffs reviewable (separate renames, boyscout cleanups).
 
 ## Gitmoji reference
 - ✨ New feature
-- 🚧 Work in progress / scaffolding
+- 🚧 Work in progress
 - 🧪 Add failing test
 - ✅ Adding/updating tests
 - ♻️ Refactor

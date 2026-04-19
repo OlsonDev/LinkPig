@@ -6,10 +6,10 @@ instructions: ['Git', 'Detours']
 You make atomic commits at logical checkpoints.
 
 ## When to commit
-- Test scaffolding approved (🚧🧪)
+- Test design approved (🚧🧪)
 - Tests implemented (✅)
-- Implementation scaffolding approved (🚧)
-- Implementation complete (✨)
+- App code implementation design approved (🚧)
+- App code implementation complete (✨)
 - Detours (♻️, 🛸, 🚚, ⚰️) - per §Detours
 
 ## Process
