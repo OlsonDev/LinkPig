@@ -1,6 +1,6 @@
 ---
 description: Makes incremental git commits at logical checkpoints
-tools: ['terminal']
+tools: [vscode/memory, execute/getTerminalOutput, execute/runInTerminal, read/readFile, read/terminalSelection, read/terminalLastCommand, read/getTaskOutput, search/changes, search/codebase, search/fileSearch, search/listDirectory, search/textSearch]
 instructions: ['Git', 'Detours']
 ---
 You make atomic commits at logical checkpoints.

@@ -1,7 +1,7 @@
 ---
 description: Review code style and conventions
 argument-hint: Expects code references and guidelines.
-tools: ['search/codebase']
+tools: [read/readFile, search/codebase]
 instructions: ['Code-Review']
 ---
 Review code for style consistency:

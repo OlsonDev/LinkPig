@@ -1,6 +1,6 @@
 ---
 description: Research codebase patterns and gather context
-tools: ['search/codebase', 'web/fetch', 'search/usages']
+tools: [vscode/memory, vscode/resolveMemoryFileUri, vscode/vscodeAPI, vscode/askQuestions, execute/getTerminalOutput, read/problems, read/readFile, read/getTaskOutput, search/changes, search/codebase, search/fileSearch, search/listDirectory, search/textSearch, search/searchSubagent, search/usages, web/fetch, web/githubRepo, browser/openBrowserPage, todo]
 ---
 Gather information for @Feature-Builder. Your research guides implementation.
 
