@@ -1,10 +1,14 @@
 import typescriptEslint from "typescript-eslint";
+import unicorn from "eslint-plugin-unicorn";
 
 export default [{
-  files: ["**/*.ts"],
+  ignores: ["**/dist/**", "**/out/**"],
+}, {
+  files: ["**/*.ts", "**/*.mjs"],
 }, {
   plugins: {
     "@typescript-eslint": typescriptEslint.plugin,
+    unicorn: unicorn,
   },
 
   languageOptions: {
@@ -14,6 +18,11 @@ export default [{
   },
 
   rules: {
+    ...unicorn.configs.recommended.rules,
+
+    "unicorn/filename-case": "off",
+    "unicorn/prevent-abbreviations": "off",
+
     "@typescript-eslint/naming-convention": ["warn", {
       selector: "import",
       format: ["camelCase", "PascalCase"],

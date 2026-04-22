@@ -9,13 +9,13 @@ export class OpenParameters {
     if (!absolutePath.startsWith(workspaceRoot)) {
       throw new Error(`Path ${absolutePath} is not within workspace ${workspaceRoot}`);
     }
-    const relativePath = absolutePath.substring(workspaceRoot.length).replace(/^[\\/]+/, '');
+    const relativePath = absolutePath.slice(workspaceRoot.length).replaceAll(/^[\\/]+/g, '');
     return new OpenParameters({ relativePath });
   }
 
   toQueryParams(): Record<string, string> {
     return {
-      open: this.relativePath.replace(/\\/g, '/')
+      open: this.relativePath.replaceAll('\\', '/')
     };
   }
 }

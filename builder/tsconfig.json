@@ -13,9 +13,10 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "Node16"
   },
-  "include": ["./**/*.ts", "../core/**/*.ts"],
+  "include": ["./**/*.ts", "../core/**/*.ts", "../dev/**/*.ts"],
   "exclude": ["node_modules", "dist"],
   "references": [
-    { "path": "../core" }
+    { "path": "../core" },
+    { "path": "../dev" }
   ]
 }

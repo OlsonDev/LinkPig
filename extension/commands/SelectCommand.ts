@@ -13,17 +13,17 @@ export class SelectCommand extends Command<SelectParameters> {
     }
 
     const parts = value.split(':');
-    const line = parseInt(parts[0], 10);
+    const line = Number.parseInt(parts[0], 10);
     let column: number | undefined = undefined;
     
     if (parts[1] !== undefined) {
-      column = parseInt(parts[1], 10);
+      column = Number.parseInt(parts[1], 10);
     }
 
-    if (isNaN(line)) {
+    if (Number.isNaN(line)) {
       throw new Error(`Invalid line number: ${parts[0]}`);
     }
-    if (column !== undefined && isNaN(column)) {
+    if (column !== undefined && Number.isNaN(column)) {
       const colStr = parts[1];
       throw new Error(`Invalid column number: ${colStr !== undefined ? colStr : ''}`);
     }

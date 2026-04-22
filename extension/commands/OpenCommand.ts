@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import * as path from 'path';
+import path from 'node:path';
 import { Command } from '../Command';
 import { ExecutionContext } from '../ExecutionContext';
 import { ValidationResult } from '../ValidationResult';

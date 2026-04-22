@@ -21,6 +21,7 @@
   "include": [],
   "exclude": ["node_modules", "out"],
   "references": [
+    { "path": "./dev" },
     { "path": "./core" },
     { "path": "./builder" },
     { "path": "./extension" }

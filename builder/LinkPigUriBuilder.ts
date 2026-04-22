@@ -35,8 +35,8 @@ export class LinkPigUriBuilder {
 
   build(): string {
     const encodeQueryValue = (value: string): string => {
-      return value.replace(/[%&#\s]/g, (char) => {
-        return '%' + char.charCodeAt(0).toString(16).toUpperCase();
+      return value.replaceAll(/[%&#\s]/g, (char) => {
+        return '%' + char.codePointAt(0)!.toString(16).toUpperCase();
       });
     };
 
