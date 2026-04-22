@@ -19,5 +19,5 @@ for (const dir of dirs) {
 }
 
 if (failed) {
-  process.exit(1);
+  process.exitCode = 1;
 }

@@ -20,7 +20,7 @@ export class SelectParameters {
 
   toQueryParams(): Record<string, string> {
     const params: Record<string, string> = {
-      select: this.column !== undefined ? `${this.line}:${this.column}` : `${this.line}`
+      select: this.column === undefined ? `${this.line}` : `${this.line}:${this.column}`
     };
     return params;
   }

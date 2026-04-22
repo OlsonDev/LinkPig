@@ -70,8 +70,7 @@ export function activate(context: vscode.ExtensionContext) {
     copyLinkToFile
   );
 
-  context.subscriptions.push(cmdCopyLinkToFileLineColumn);
-  context.subscriptions.push(cmdCopyLinkToFile);
+  context.subscriptions.push(cmdCopyLinkToFileLineColumn, cmdCopyLinkToFile);
 }
 
 export function deactivate() {}

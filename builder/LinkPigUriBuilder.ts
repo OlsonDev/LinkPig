@@ -33,15 +33,15 @@ export class LinkPigUriBuilder {
     return this;
   }
 
-  build(): string {
-    const encodeQueryValue = (value: string): string => {
-      return value.replaceAll(/[%&#\s]/g, (char) => {
-        return '%' + char.codePointAt(0)!.toString(16).toUpperCase();
-      });
-    };
+  private static encodeQueryValue(value: string): string {
+    return value.replaceAll(/[%&#\s]/g, (char) => {
+      return '%' + char.codePointAt(0)!.toString(16).toUpperCase();
+    });
+  }
 
+  build(): string {
     const queryString = this.commands
-      .map(({ key, value }) => `${encodeURIComponent(key)}=${encodeQueryValue(value)}`)
+      .map(({ key, value }) => `${encodeURIComponent(key)}=${LinkPigUriBuilder.encodeQueryValue(value)}`)
       .join('&');
     
     return `${this.scheme}://${this.authority}?${queryString}`;

@@ -27,13 +27,7 @@ export class OpenCommand extends Command<OpenParameters> {
       const fileUri = vscode.Uri.file(filePath);
       const fileStat = await vscode.workspace.fs.stat(fileUri);
       
-      if (fileStat.type !== vscode.FileType.File) {
-        errors.push({
-          param: this.paramKey,
-          position: this.position,
-          message: `Path is not a file: ${this.params.relativePath}`
-        });
-      } else {
+      if (fileStat.type === vscode.FileType.File) {
         // Simulate opening the file by updating context
         const document = await vscode.workspace.openTextDocument(fileUri);
         // Don't actually show it during validation, just simulate the editor state
@@ -41,8 +35,14 @@ export class OpenCommand extends Command<OpenParameters> {
           document,
           selection: new vscode.Selection(0, 0, 0, 0)
         } as vscode.TextEditor;
+      } else {
+        errors.push({
+          param: this.paramKey,
+          position: this.position,
+          message: `Path is not a file: ${this.params.relativePath}`
+        });
       }
-    } catch (error) {
+    } catch {
       errors.push({
         param: this.paramKey,
         position: this.position,

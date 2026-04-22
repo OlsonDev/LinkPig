@@ -21,15 +21,15 @@ export class SelectCommand extends Command<SelectParameters> {
     }
 
     if (Number.isNaN(line)) {
-      throw new Error(`Invalid line number: ${parts[0]}`);
+      throw new TypeError(`Invalid line number: ${parts[0]}`);
     }
-    if (column !== undefined && Number.isNaN(column)) {
-      const colStr = parts[1];
-      throw new Error(`Invalid column number: ${colStr !== undefined ? colStr : ''}`);
+    if (column === undefined || !Number.isNaN(column)) {
+      const selectParams = new SelectParameters({ line, column });
+      return new SelectCommand(selectParams, SelectCommand.commandKey, position);
     }
 
-    const selectParams = new SelectParameters({ line, column });
-    return new SelectCommand(selectParams, SelectCommand.commandKey, position);
+    const colStr = parts[1];
+    throw new TypeError(`Invalid column number: ${colStr ?? ''}`);
   }
 
   async validate(context: ExecutionContext): Promise<ValidationResult> {

@@ -21,6 +21,7 @@ export default [{
     ...unicorn.configs.recommended.rules,
 
     "unicorn/filename-case": "off",
+    "unicorn/no-null": "off",
     "unicorn/prevent-abbreviations": "off",
 
     "@typescript-eslint/naming-convention": ["warn", {
