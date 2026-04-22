@@ -51,7 +51,8 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "bun run package",
+    "vscode:prepublish": "bun run guard-dev && bun run package",
+    "guard-dev": "node dev/guard.mjs",
     "compile": "bun build ./extension/extension.ts --outdir ./dist --target node --format cjs --sourcemap --external vscode --external path",
     "watch": "bun build ./extension/extension.ts --outdir ./dist --target node --format cjs --sourcemap --external vscode --external path --watch",
     "package": "bun build ./extension/extension.ts --outdir ./dist --target node --format cjs --sourcemap --minify --external vscode --external path",

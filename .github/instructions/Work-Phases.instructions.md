@@ -10,8 +10,13 @@ Work in two main phases: design then implementation. You may look for §Detours 
   - What classes and methods will exist?
   - What tests will be added/modified?
   - Add minimal comments to clarify intent if needed
-- Add `throwNotImplemented()` so code compiles
-- If the code in the implementation phase will likely use a block body, put your `throwNotImplemented()` inside a block body. This will keep our diffs cleaner.
+- Add `throwNotImplemented()` so code compiles. Import it from `dev/`:
+  ```typescript
+  import { throwNotImplemented } from '../dev';
+  ```
+  - Add `throwNotImplemented('intended design')` if the surrounding context isn't clear enough.
+  - If the code in the implementation phase will likely use a block body, put your `throwNotImplemented()` inside a block body. This will keep our diffs cleaner.
+  - Remove the import when the implementation phase replaces all `throwNotImplemented()` calls.
 
 ### Test code example
 ```typescript
@@ -21,7 +26,7 @@ it('should validate line numbers', () => throwNotImplemented());
 ### Source code example
 ```typescript
 validate(context: ExecutionContext): ValidationResult {
-  throwNotImplemented();
+  throwNotImplemented('line numbers, foo, bar, baz');
 }
 ```
 
