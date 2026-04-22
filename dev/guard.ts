@@ -7,7 +7,7 @@ const devImportPattern = /from\s+['"]\.\.\/dev(?:\/[^'"]*)?['"]/;
 let failed = false;
 
 for (const dir of dirs) {
-  const files = fs.readdirSync(dir, { recursive: true }).filter(f => f.endsWith('.ts'));
+  const files = fs.readdirSync(dir, { recursive: true }).filter((f): f is string => typeof f === 'string' && f.endsWith('.ts'));
   for (const file of files) {
     const filePath = path.join(dir, file);
     const content = fs.readFileSync(filePath, 'utf8');
@@ -18,6 +18,4 @@ for (const dir of dirs) {
   }
 }
 
-if (failed) {
-  process.exitCode = 1;
-}
+if (failed) process.exitCode = 1;
