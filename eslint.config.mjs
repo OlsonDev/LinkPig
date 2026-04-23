@@ -1,37 +1,46 @@
-import typescriptEslint from "typescript-eslint";
-import unicorn from "eslint-plugin-unicorn";
+import prettier from 'eslint-config-prettier';
+import unicorn from 'eslint-plugin-unicorn';
+import typescriptEslint from 'typescript-eslint';
 
-export default [{
-  ignores: ["**/dist/**", "**/out/**"],
-}, {
-  files: ["**/*.ts", "**/*.mjs"],
-}, {
-  plugins: {
-    "@typescript-eslint": typescriptEslint.plugin,
-    unicorn: unicorn,
+export default [
+  {
+    ignores: ['**/dist/**', '**/out/**'],
   },
-
-  languageOptions: {
-    parser: typescriptEslint.parser,
-    ecmaVersion: "latest",
-    sourceType: "module",
+  {
+    files: ['**/*.ts', '**/*.mjs'],
   },
+  {
+    plugins: {
+      '@typescript-eslint': typescriptEslint.plugin,
+      unicorn: unicorn,
+    },
 
-  rules: {
-    ...unicorn.configs.recommended.rules,
+    languageOptions: {
+      parser: typescriptEslint.parser,
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+    },
 
-    "unicorn/filename-case": "off",
-    "unicorn/no-null": "off",
-    "unicorn/prevent-abbreviations": "off",
+    rules: {
+      ...unicorn.configs.recommended.rules,
 
-    "@typescript-eslint/naming-convention": ["warn", {
-      selector: "import",
-      format: ["camelCase", "PascalCase"],
-    }],
+      'unicorn/filename-case': 'off',
+      'unicorn/no-null': 'off',
+      'unicorn/prevent-abbreviations': 'off',
 
-    curly: "off",
-    eqeqeq: "warn",
-    "no-throw-literal": "warn",
-    semi: "warn",
+      '@typescript-eslint/naming-convention': [
+        'warn',
+        {
+          selector: 'import',
+          format: ['camelCase', 'PascalCase'],
+        },
+      ],
+
+      curly: 'off',
+      eqeqeq: 'warn',
+      'no-throw-literal': 'warn',
+      semi: 'warn',
+    },
   },
-}];
+  prettier,
+];

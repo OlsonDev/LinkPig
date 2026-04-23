@@ -60,16 +60,21 @@
     "watch-tests": "tsc -p . -w --outDir out",
     "pretest": "bun run compile-tests && bun run compile && bun run lint",
     "lint": "eslint extension",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "test": "vscode-test"
   },
   "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
     "@types/mocha": "^10.0.10",
     "@types/node": "25.x",
     "@types/vscode": "^1.116.0",
     "@vscode/test-cli": "^0.0.12",
     "@vscode/test-electron": "^2.5.2",
     "eslint": "^10.2.1",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-unicorn": "^64.0.0",
+    "prettier": "^3.8.3",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.58.2"
   }
