@@ -1,8 +1,8 @@
 import * as vscode from 'vscode';
+import { SelectParameters } from '../../core';
 import { Command } from '../Command';
 import { ExecutionContext } from '../ExecutionContext';
 import { ValidationResult } from '../ValidationResult';
-import { SelectParameters } from '../../core';
 
 export class SelectCommand extends Command<SelectParameters> {
   static readonly commandKey = 'select';
@@ -15,7 +15,7 @@ export class SelectCommand extends Command<SelectParameters> {
     const parts = value.split(':');
     const line = Number.parseInt(parts[0], 10);
     let column: number | undefined = undefined;
-    
+
     if (parts[1] !== undefined) {
       column = Number.parseInt(parts[1], 10);
     }
@@ -39,7 +39,7 @@ export class SelectCommand extends Command<SelectParameters> {
       errors.push({
         param: this.paramKey,
         position: this.position,
-        message: 'No file is open to select in'
+        message: 'No file is open to select in',
       });
       return { valid: false, errors };
     }
@@ -51,17 +51,17 @@ export class SelectCommand extends Command<SelectParameters> {
       errors.push({
         param: this.paramKey,
         position: this.position,
-        message: `Line ${this.params.line} is out of range (document has ${document.lineCount} lines)`
+        message: `Line ${this.params.line} is out of range (document has ${document.lineCount} lines)`,
       });
     } else if (this.params.column !== undefined) {
       const line = document.lineAt(lineIndex);
       const columnIndex = this.params.column - 1;
-      
+
       if (columnIndex < 0 || columnIndex > line.text.length) {
         errors.push({
           param: this.paramKey,
           position: this.position,
-          message: `Column ${this.params.column} is out of range (line ${this.params.line} has ${line.text.length} characters)`
+          message: `Column ${this.params.column} is out of range (line ${this.params.line} has ${line.text.length} characters)`,
         });
       }
     }
@@ -74,13 +74,13 @@ export class SelectCommand extends Command<SelectParameters> {
       // Update the simulated editor state
       context.currentEditor = {
         ...context.currentEditor,
-        selection: new vscode.Selection(position, position)
+        selection: new vscode.Selection(position, position),
       } as vscode.TextEditor;
     }
 
     return {
       valid: errors.length === 0,
-      errors
+      errors,
     };
   }
 
@@ -93,7 +93,7 @@ export class SelectCommand extends Command<SelectParameters> {
     const column = (this.params.column ?? 1) - 1;
     const position = new vscode.Position(Math.max(0, line), Math.max(0, column));
     const range = new vscode.Range(position, position);
-    
+
     context.currentEditor.selection = new vscode.Selection(position, position);
     context.currentEditor.revealRange(range, vscode.TextEditorRevealType.InCenter);
     context.addCommand('select');

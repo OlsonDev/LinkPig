@@ -1,7 +1,9 @@
 ---
 description: Load when writing or reviewing code.
 ---
+
 # Code guidelines
+
 - Keep documentation additions/edits to a minimum as the project hasn't stabilized.
 - Do NOT worry about backwards compatibility/breaking changes/semver (semantic versioning) yet.
 - Keep comments in the code to a minimum; prefer creating new named symbols (variables, methods/functions, types/classes) to express how/why things work the way they do.

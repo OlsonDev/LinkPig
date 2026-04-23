@@ -1,9 +1,9 @@
-import * as vscode from 'vscode';
 import path from 'node:path';
+import * as vscode from 'vscode';
+import { OpenParameters } from '../../core';
 import { Command } from '../Command';
 import { ExecutionContext } from '../ExecutionContext';
 import { ValidationResult } from '../ValidationResult';
-import { OpenParameters } from '../../core';
 
 export class OpenCommand extends Command<OpenParameters> {
   static readonly commandKey = 'open';
@@ -26,33 +26,33 @@ export class OpenCommand extends Command<OpenParameters> {
     try {
       const fileUri = vscode.Uri.file(filePath);
       const fileStat = await vscode.workspace.fs.stat(fileUri);
-      
+
       if (fileStat.type === vscode.FileType.File) {
         // Simulate opening the file by updating context
         const document = await vscode.workspace.openTextDocument(fileUri);
         // Don't actually show it during validation, just simulate the editor state
         context.currentEditor = {
           document,
-          selection: new vscode.Selection(0, 0, 0, 0)
+          selection: new vscode.Selection(0, 0, 0, 0),
         } as vscode.TextEditor;
       } else {
         errors.push({
           param: this.paramKey,
           position: this.position,
-          message: `Path is not a file: ${this.params.relativePath}`
+          message: `Path is not a file: ${this.params.relativePath}`,
         });
       }
     } catch {
       errors.push({
         param: this.paramKey,
         position: this.position,
-        message: `File not found: ${this.params.relativePath}`
+        message: `File not found: ${this.params.relativePath}`,
       });
     }
 
     return {
       valid: errors.length === 0,
-      errors
+      errors,
     };
   }
 
@@ -64,7 +64,7 @@ export class OpenCommand extends Command<OpenParameters> {
     const fileUri = vscode.Uri.file(filePath);
     const document = await vscode.workspace.openTextDocument(fileUri);
     const editor = await vscode.window.showTextDocument(document);
-    
+
     context.currentEditor = editor;
     context.addCommand('open');
   }

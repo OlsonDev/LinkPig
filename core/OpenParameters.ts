@@ -15,7 +15,7 @@ export class OpenParameters {
 
   toQueryParams(): Record<string, string> {
     return {
-      open: this.relativePath.replaceAll('\\', '/')
+      open: this.relativePath.replaceAll('\\', '/'),
     };
   }
 }

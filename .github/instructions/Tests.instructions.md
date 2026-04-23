@@ -2,8 +2,11 @@
 description: Load when working with tests, including test files and test-related code.
 applyTo: **/*.spec.ts, **/*.test.ts, **/tests/**, **/*Test*/**/*.ts
 ---
+
 # Tests
+
 ## Always
+
 - All commands need unit tests for:
   - Encoding
   - Decoding (parsing)
@@ -23,6 +26,8 @@ applyTo: **/*.spec.ts, **/*.test.ts, **/tests/**, **/*Test*/**/*.ts
   - Extract common sets of assertions
 
 ## Mocking
+
 Command validation tests will likely require mocking of the VS Code API and possibly other parts of the system. This is because validation may depend on the state of the file system, the contents of files, and the state of the text editor. For example:
-  - Can I `open` this file? If the mock says it exists, yes. (Otherwise, no.)
-  - Can I `select` these characters on this line in the current text editor? If the mock says they exist, yes. (Otherwise, no.)
+
+- Can I `open` this file? If the mock says it exists, yes. (Otherwise, no.)
+- Can I `select` these characters on this line in the current text editor? If the mock says they exist, yes. (Otherwise, no.)

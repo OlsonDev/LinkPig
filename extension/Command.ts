@@ -5,7 +5,7 @@ export abstract class Command<TParams = any> {
   constructor(
     public readonly params: TParams,
     public readonly paramKey: string,
-    public readonly position: number
+    public readonly position: number,
   ) {}
 
   abstract validate(context: ExecutionContext): Promise<ValidationResult>;

@@ -21,8 +21,5 @@
   },
   "include": ["./**/*.ts", "../core/**/*.ts", "../dev/**/*.ts"],
   "exclude": ["node_modules", "dist", "test"],
-  "references": [
-    { "path": "../core" },
-    { "path": "../dev" }
-  ]
+  "references": [{ "path": "../core" }, { "path": "../dev" }]
 }

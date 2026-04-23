@@ -8,15 +8,17 @@ async function checkDirectory(dir: string): Promise<boolean> {
   const entries = await fs.readdir(dir, { recursive: true });
   const tsFiles = entries.filter((f): f is string => typeof f === 'string' && f.endsWith('.ts'));
 
-  const results = await Promise.all(tsFiles.map(async (file) => {
-    const filePath = path.join(dir, file);
-    const content = await fs.readFile(filePath, 'utf8');
-    if (devImportPattern.test(content)) {
-      console.error(`ERROR: ${filePath} imports from dev/`);
-      return true;
-    }
-    return false;
-  }));
+  const results = await Promise.all(
+    tsFiles.map(async (file) => {
+      const filePath = path.join(dir, file);
+      const content = await fs.readFile(filePath, 'utf8');
+      if (devImportPattern.test(content)) {
+        console.error(`ERROR: ${filePath} imports from dev/`);
+        return true;
+      }
+      return false;
+    }),
+  );
 
   return results.some(Boolean);
 }

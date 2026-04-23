@@ -4,6 +4,7 @@ argument-hint: Functionality description, research summary, code references, pre
 tools: [read/readFile, search/codebase]
 instructions: ['Code-Review', 'Work-Phases']
 ---
+
 Primary concern: Does the code achieve desired functionality? Is it correct? Edge cases missed?
 
 For design reviews: Approve test coverage plans and API designs before implementation begins.

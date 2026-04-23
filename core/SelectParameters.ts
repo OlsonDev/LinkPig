@@ -9,7 +9,7 @@ export class SelectParameters {
     if (init.column !== undefined && init.column < 1) {
       throw new Error('Column must be >= 1');
     }
-    
+
     this.line = init.line;
     this.column = init.column;
   }
@@ -20,7 +20,7 @@ export class SelectParameters {
 
   toQueryParams(): Record<string, string> {
     const params: Record<string, string> = {
-      select: this.column === undefined ? `${this.line}` : `${this.line}:${this.column}`
+      select: this.column === undefined ? `${this.line}` : `${this.line}:${this.column}`,
     };
     return params;
   }

@@ -2,9 +2,11 @@
 description: Load when making git commits
 instructions: ['Guidelines', 'Detours']
 ---
+
 # Git conventions
 
 ## Commit message format
+
 `{emoji} {message}.` or `{emoji}{emoji} {message}.`
 
 - Capitalize the first word
@@ -15,6 +17,7 @@ instructions: ['Guidelines', 'Detours']
 - Two emojis if two main themes
 - Wrap code identifiers in backticks: `devDependencies`, `foo()`
 - Use full commands: `npm audit fix` not "audit fix"
+
 ```
 ✅ Added SelectCommand tests; updated OpenCommand tests.
 ♻️⚡ Refactored foo for performance.
@@ -22,9 +25,11 @@ instructions: ['Guidelines', 'Detours']
 ```
 
 ## Atomic commits
+
 See §Detours for keeping diffs reviewable (separate renames, boyscout cleanups).
 
 ## Gitmoji reference
+
 - ✨ New feature
 - 🚧 Work in progress
 - 🧪 Add failing test
@@ -47,6 +52,7 @@ See §Detours for keeping diffs reviewable (separate renames, boyscout cleanups)
 - 🦖 Add backwards compatibility
 
 ## Unofficial emojis
+
 - 🛸 Extracting code to method/file
 - 🦾 Update AI-related code (agents, instructions, etc.)
 - 🤖 Significant work done by AI agent

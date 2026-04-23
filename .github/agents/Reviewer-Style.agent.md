@@ -4,7 +4,9 @@ argument-hint: Expects code references and guidelines.
 tools: [read/readFile, search/codebase]
 instructions: ['Code-Review']
 ---
+
 Review code for style consistency:
+
 - Naming conventions
 - File organization (one type per file)
 - OOP/functional paradigms over procedural
