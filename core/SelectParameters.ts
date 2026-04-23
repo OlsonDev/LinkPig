@@ -4,10 +4,10 @@ export class SelectParameters {
 
   constructor(init: { line: number; column?: number }) {
     if (init.line < 1) {
-      throw new Error('Line must be >= 1');
+      throw new Error('Line must be ≥ 1');
     }
     if (init.column !== undefined && init.column < 1) {
-      throw new Error('Column must be >= 1');
+      throw new Error('Column must be ≥ 1');
     }
 
     this.line = init.line;
