@@ -38,7 +38,7 @@ validate(context: ExecutionContext): ValidationResult {
 
 ## Phase 2: Design review
 
-- All reviewer agents must approve the design.
+- @Reviewer-Lead must approve the design.
 
 ## Phase 3: Commit design
 
@@ -50,7 +50,7 @@ validate(context: ExecutionContext): ValidationResult {
 
 ## Phase 5: Implementation review
 
-- All reviewer agents must approve the implementation.
+- @Reviewer-Lead must approve the implementation.
 
 ## Phase 6: Commit implementation
 

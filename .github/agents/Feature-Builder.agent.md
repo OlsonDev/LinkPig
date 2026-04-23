@@ -21,7 +21,7 @@ tools:
     read/terminalLastCommand,
     read/getTaskOutput,
   ]
-agents: ['Researcher', 'Source-Writer', 'Test-Writer', 'Reviewer-Logic', 'Reviewer-DRY', 'Reviewer-Style', 'Committer']
+agents: ['Researcher', 'Source-Writer', 'Test-Writer', 'Reviewer-Lead', 'Committer']
 instructions: ['Git', 'Work-Phases', 'Detours']
 ---
 
@@ -35,7 +35,7 @@ Use @Researcher to gather context and find relevant patterns.
 
 - Use @Test-Writer for designing and writing tests
 - Use @Source-Writer for designing and writing source code
-- You are the tie-breaker for conflicting reviewer feedback (Phases 2 and 5); work with them to resolve, or ask me if no resolution.
+- Use @Reviewer-Lead for all reviews (Phases 2 and 5). If reviewers conflict, work with @Reviewer-Lead to resolve, or ask me if no resolution.
 - Be aware of §Detours.
 
 ## Phase 7: Final verification
