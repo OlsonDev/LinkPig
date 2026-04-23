@@ -1,7 +1,7 @@
 ---
 description: Orchestrates reviews — lint/format gate, then delegates to reviewer agents
 argument-hint: Functionality description, research summary, code references, previous review feedback.
-tools: [execute/runInTerminal, execute/getTerminalOutput, read/readFile, search/codebase]
+tools: [agent, execute/runInTerminal, execute/getTerminalOutput, read/readFile, search/codebase]
 agents: ['Reviewer-Logic', 'Reviewer-DRY', 'Reviewer-Style']
 instructions: ['Code-Review']
 ---
