@@ -1,7 +1,12 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-const dirs = ['extension', 'builder', 'core'];
+const dirs = [
+  // Diff friendly
+  'extension',
+  'builder',
+  'core',
+];
 const devImportPattern = /from\s+['"]\.\.\/dev(?:\/[^'"]*)?['"]/;
 
 async function checkDirectory(dir: string): Promise<boolean> {

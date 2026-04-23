@@ -19,7 +19,16 @@
     "exactOptionalPropertyTypes": true,
     "noUncheckedIndexedAccess": true
   },
-  "include": ["./**/*.ts", "../core/**/*.ts", "../dev/**/*.ts"],
+  "include": [
+    // Diff friendly
+    "./**/*.ts",
+    "../core/**/*.ts",
+    "../dev/**/*.ts"
+  ],
   "exclude": ["node_modules", "dist", "test"],
-  "references": [{ "path": "../core" }, { "path": "../dev" }]
+  "references": [
+    // Diff friendly
+    { "path": "../core" },
+    { "path": "../dev" }
+  ]
 }

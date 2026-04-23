@@ -13,7 +13,16 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "NodeNext"
   },
-  "include": ["./**/*.ts", "../core/**/*.ts", "../dev/**/*.ts"],
+  "include": [
+    // Diff friendly
+    "./**/*.ts",
+    "../core/**/*.ts",
+    "../dev/**/*.ts"
+  ],
   "exclude": ["node_modules", "dist"],
-  "references": [{ "path": "../core" }, { "path": "../dev" }]
+  "references": [
+    // Diff friendly
+    { "path": "../core" },
+    { "path": "../dev" }
+  ]
 }

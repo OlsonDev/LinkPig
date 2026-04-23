@@ -4,10 +4,18 @@ import typescriptEslint from 'typescript-eslint';
 
 export default [
   {
-    ignores: ['**/dist/**', '**/out/**'],
+    ignores: [
+      // Diff friendly
+      '**/dist/**',
+      '**/out/**',
+    ],
   },
   {
-    files: ['**/*.ts', '**/*.mjs'],
+    files: [
+      // Diff friendly
+      '**/*.ts',
+      '**/*.mjs',
+    ],
   },
   {
     plugins: {

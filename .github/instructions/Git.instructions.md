@@ -16,6 +16,8 @@ instructions: ['Guidelines', 'Detours']
 - Use semi-colons between changes
 - Two emojis if two main themes
 - Wrap code identifiers in backticks: `devDependencies`, `foo()`
+- Reference agents as `@AgentName`: `@Reviewer-Style`
+- Reference instructions as `§Name`: `§Git`
 - Use full commands: `npm audit fix` not "audit fix"
 
 ```
