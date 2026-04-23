@@ -1,1 +1,1 @@
-export { throwNotImplemented } from './throwNotImplemented';
+export { throwNotImplemented } from './throwNotImplemented.ts';

@@ -1,21 +1,25 @@
-import fs from 'node:fs';
+import fs from 'node:fs/promises';
 import path from 'node:path';
 
 const dirs = ['extension', 'builder', 'core'];
 const devImportPattern = /from\s+['"]\.\.\/dev(?:\/[^'"]*)?['"]/;
 
-let failed = false;
+async function checkDirectory(dir: string): Promise<boolean> {
+  const entries = await fs.readdir(dir, { recursive: true });
+  const tsFiles = entries.filter((f): f is string => typeof f === 'string' && f.endsWith('.ts'));
 
-for (const dir of dirs) {
-  const files = fs.readdirSync(dir, { recursive: true }).filter((f): f is string => typeof f === 'string' && f.endsWith('.ts'));
-  for (const file of files) {
+  const results = await Promise.all(tsFiles.map(async (file) => {
     const filePath = path.join(dir, file);
-    const content = fs.readFileSync(filePath, 'utf8');
+    const content = await fs.readFile(filePath, 'utf8');
     if (devImportPattern.test(content)) {
       console.error(`ERROR: ${filePath} imports from dev/`);
-      failed = true;
+      return true;
     }
-  }
+    return false;
+  }));
+
+  return results.some(Boolean);
 }
 
-if (failed) process.exitCode = 1;
+const results = await Promise.all(dirs.map((dir) => checkDirectory(dir)));
+if (results.some(Boolean)) process.exitCode = 1;
