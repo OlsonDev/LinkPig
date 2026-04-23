@@ -57,4 +57,3 @@ See §Detours for keeping diffs reviewable (separate renames, boyscout cleanups)
 
 - 🛸 Extracting code to method/file
 - 🦾 Update AI-related code (agents, instructions, etc.)
-- 🤖 Significant work done by AI agent
